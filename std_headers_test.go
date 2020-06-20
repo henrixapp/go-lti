@@ -3,12 +3,14 @@ package lti
 import (
 	"testing"
 
-	"github.com/goalbook/goalbook-auth/auth/lti/types"
+	//"github.com/goalbook/goalbook-auth/auth/lti/types"
 	"net/url"
 
 	"bytes"
 	"fmt"
 	"io/ioutil"
+
+	"github.com/henrixapp/go-lti/types"
 )
 
 var testPrimaryEmail = "mohammads@goalbookapp.com"

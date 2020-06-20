@@ -1,7 +1,7 @@
 package lti
 
 import (
-	"github.com/goalbook/goalbook-auth/auth/lti/Godeps/_workspace/src/github.com/google/go-querystring/query"
+	"github.com/google/go-querystring/query"
 )
 
 // LTIStdResponse provides ability to serialize LTI response messages per LTI 1.0 spec.

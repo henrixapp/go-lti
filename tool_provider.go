@@ -1,7 +1,7 @@
 package lti
 
 import (
-	"github.com/goalbook/goalbook-auth/auth/lti/hmacsha1"
+	"github.com/henrixapp/go-lti/hmacsha1"
 
 	"errors"
 	"fmt"

@@ -1,15 +1,17 @@
 package lti
 
 import (
-	"github.com/goalbook/goalbook-auth/auth/lti/types"
+	//"github.com/goalbook/goalbook-auth/auth/lti/types"
 
 	"bytes"
 	"io"
 	"io/ioutil"
 
 	"encoding/json"
-	"github.com/goalbook/goalbook-auth/auth/lti/Godeps/_workspace/src/github.com/google/go-querystring/query"
-	"github.com/goalbook/goalbook-auth/auth/lti/Godeps/_workspace/src/github.com/gorilla/schema"
+
+	"github.com/google/go-querystring/query"
+	"github.com/gorilla/schema"
+	"github.com/henrixapp/go-lti/types"
 
 	"net/url"
 )
