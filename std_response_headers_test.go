@@ -30,7 +30,7 @@ func TestSerializeStdLTIResponse(t *testing.T) {
 	for _, test := range tests {
 		seralized, err := test.responseStruct.Serialize()
 		if err != nil {
-			t.Error("Error Serializing: Serializing LTI Standard Response failed with error '%s'.", err)
+			t.Errorf("Error Serializing: Serializing LTI Standard Response failed with error '%s'.", err)
 		}
 		if seralized != test.expectedResponse {
 			t.Logf("Actual:\n%s\n", seralized)

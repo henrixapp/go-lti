@@ -129,10 +129,10 @@ func TestParseJsonBody(t *testing.T) {
 		t.Errorf("Bad marshal: Of the present roles, %s, missing %s institution role", l.Roles.GetInstitutionRoles(), types.InstAdmin)
 	}
 	if len(l.Roles.GetContextRoles()) != 0 {
-		t.Errorf("Bad marshal: There should be no context roles present, but", l.Roles.GetContextRoles())
+		t.Errorf("Bad marshal: There should be no context roles present, but %s", l.Roles.GetContextRoles())
 	}
 	if len(l.Roles.GetUndefinedRoles()) != 0 {
-		t.Errorf("Bad marshal: There should be no undefined roles present, but", l.Roles.GetUndefinedRoles())
+		t.Errorf("Bad marshal: There should be no undefined roles present, but  %s", l.Roles.GetUndefinedRoles())
 	}
 }
 
@@ -215,10 +215,10 @@ func TestParseUrlEncodedForm(t *testing.T) {
 		t.Errorf("Bad marshal: Of the present roles, %s, missing %s institution role", l.Roles.GetInstitutionRoles(), types.InstAdmin)
 	}
 	if len(l.Roles.GetContextRoles()) != 0 {
-		t.Errorf("Bad marshal: There should be no context roles present, but", l.Roles.GetContextRoles())
+		t.Errorf("Bad marshal: There should be no context roles present, but %s", l.Roles.GetContextRoles())
 	}
 	if len(l.Roles.GetUndefinedRoles()) != 0 {
-		t.Errorf("Bad marshal: There should be no undefined roles present, but", l.Roles.GetUndefinedRoles())
+		t.Errorf("Bad marshal: There should be no undefined roles present, but %s", l.Roles.GetUndefinedRoles())
 	}
 
 	/*

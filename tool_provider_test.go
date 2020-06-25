@@ -52,7 +52,9 @@ func TestToolProviderValidation(t *testing.T) {
 	/*
 		Validation should pass when not checking timestamp
 	*/
-	valid, err = provider.ValidateRequest("secret", false, false)
+	valid, err = provider.ValidateRequest("secret", false, false, false, func(path string) string {
+		return path
+	})
 	if err != nil {
 		t.Errorf("Error: Validation failed with error '%s'", err)
 	} else if !valid {
@@ -67,7 +69,9 @@ func TestToolProviderValidation(t *testing.T) {
 	/*
 		Validation should NOT pass when checking timestamp
 	*/
-	valid, err = provider.ValidateRequest("secret", true, false)
+	valid, err = provider.ValidateRequest("secret", true, false, false, func(path string) string {
+		return path
+	})
 	if err == nil {
 		t.Errorf("Expected Error: Expected validation error but none returned")
 	} else if err != errLogInvalidTimestamp {

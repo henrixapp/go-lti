@@ -57,7 +57,7 @@ func NewLTIToolProvider(r *http.Request) (*LTIToolProvider, error) {
 // Validate that the LTI request was signed with the provided consumer secret.
 //
 // TODO Implement nonce checking and better timestamp checking.
-func (tp *LTIToolProvider) ValidateRequest(consumerSecret string, checkTimestamp, checkNonce bool) (bool, error) {
+func (tp *LTIToolProvider) ValidateRequest(consumerSecret string, checkTimestamp, checkNonce bool, forceTLS bool, transformPath func(string) string) (bool, error) {
 	var err error
 
 	defer func() {
@@ -77,6 +77,7 @@ func (tp *LTIToolProvider) ValidateRequest(consumerSecret string, checkTimestamp
 	}
 	if !req.URL.IsAbs() {
 		requestUrl = req.URL
+		requestUrl.Path = transformPath(req.URL.Path)
 		if tp.requestProxyScheme != "" {
 			requestUrl.Scheme = tp.requestProxyScheme
 		} else if req.TLS == nil {
@@ -89,6 +90,9 @@ func (tp *LTIToolProvider) ValidateRequest(consumerSecret string, checkTimestamp
 		requestUrl = req.URL
 	}
 
+	if forceTLS {
+		requestUrl.Scheme = "https"
+	}
 	reqStr := hmacsha1.RequestSignatureBaseString(req.Method, requestUrl.String(), req.Form)
 
 	if !hmacsha1.CheckMAC(reqStr, consumerSecret, "", tp.LTIHeaders.OAuthSignature) {
